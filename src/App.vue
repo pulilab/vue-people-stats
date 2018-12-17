@@ -14,12 +14,30 @@
       <h2>{{ s }}</h2>
       <TagChart :graph-data="tags" :subsets="subsets[s]" />
     </section>
+
+    <section v-if="countriesCount">
+      <h2>Country Distribution</h2>
+      <TagChart :graph-data="countriesCount" />
+    </section>
+
+    <section>
+      <h2>Free Search</h2>
+      <input v-model.lazy="search" />
+      <TagChart
+        v-if="searched.length > 0"
+        :graph-data="tags"
+        :subsets="searched"
+      />
+    </section>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import { inBounds } from "./utils.js";
 import tags from "./assets/tags.json";
 import subsets from "./assets/subsets.json";
+import boundaries from "./assets/boundaries.json";
 import TagChart from "./components/TagChart.vue";
 
 export default {
@@ -30,16 +48,60 @@ export default {
   data() {
     return {
       tags,
-      subsets
+      subsets,
+      boundaries,
+      people: null,
+      search: null
     };
   },
   computed: {
     sections() {
       return Object.keys(this.subsets);
+    },
+    countriesCount() {
+      if (this.people) {
+        const result = [];
+        const countries = this.boundaries.reduce((a, c) => {
+          const inner = { name: c.name, people: 0 };
+          a[c.name] = inner;
+          result.push(inner);
+          return a;
+        }, {});
+        this.people.forEach(p => {
+          const latLng = {
+            lat: p.location.coordinates[0],
+            lng: p.location.coordinates[1]
+          };
+          for (const country of boundaries) {
+            if (inBounds(latLng, country)) {
+              countries[country.name].people += 1;
+              return;
+            }
+          }
+        });
+        return result
+          .filter(r => r.people)
+          .sort((a, b) => b.people - a.people)
+          .slice(0, 20);
+      }
+      return undefined;
+    },
+    searched() {
+      if (this.search) {
+        return this.search.split(",");
+      }
+      return [];
     }
   },
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.loadPeople();
+  },
+  methods: {
+    async loadPeople() {
+      const { data } = await axios.get("/api/people/");
+      this.people = data;
+    }
+  }
 };
 </script>
 
