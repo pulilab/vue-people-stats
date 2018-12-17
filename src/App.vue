@@ -39,6 +39,16 @@
         />
       </div>
     </section>
+    <section>
+      <h2>9 months of VuePeople</h2>
+      <ul>
+        <li>Map data visualisation is.. Not trivial!</li>
+        <li>It grew!</li>
+        <li>At some point it was.. slow!</li>
+        <li>Libraries, they are amazing but...</li>
+        <li>Few lines of code may do... all the difference</li>
+      </ul>
+    </section>
   </div>
 </template>
 
