@@ -40,14 +40,19 @@
       </div>
     </section>
     <section>
-      <h2>9 months of VuePeople</h2>
-      <ul>
-        <li>Map data visualisation is.. Not trivial!</li>
-        <li>It grew!</li>
-        <li>At some point it was.. slow!</li>
-        <li>Libraries, they are amazing but...</li>
-        <li>Few lines of code may do... all the difference</li>
-      </ul>
+      <div>
+        <h2>
+          9 months<br />
+          <span>of</span> VuePeople
+        </h2>
+        <ul>
+          <li>Map data visualisation is.. Not trivial!</li>
+          <li>It grew!</li>
+          <li>At some point it was.. slow!</li>
+          <li>Libraries, they are amazing but...</li>
+          <li>Few lines of code may do... all the difference</li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
@@ -147,11 +152,15 @@ body {
 }
 
 h2 {
-  margin: 0 0 26px;
-  font-size: 52px;
+  margin: 0 0 20px;
+  font-size: 48px;
   line-height: 1;
   text-transform: capitalize;
   letter-spacing: -1px;
+}
+
+h2 span {
+  text-transform: none;
 }
 
 section {
@@ -175,14 +184,15 @@ section > div {
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.075);
 }
 
-section > div h2,
-section > div > div {
-  width: 50%;
+section canvas {
+  width: 640px;
+  height: 480px;
 }
 
 section input {
   width: 35%;
-  padding: 10px;
+  margin: 0 0 20px;
+  padding: 5px 10px;
   font-size: 24px;
   text-align: center;
   border: 1px solid #a6b0ba;
@@ -190,6 +200,28 @@ section input {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   color: #35495e;
   outline: none;
+}
+
+section ul {
+  margin: 20px;
+  padding: 0;
+}
+
+section ul li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 36px;
+  font-size: 28px;
+  text-align: left;
+  list-style-type: none;
+}
+
+section ul li::before {
+  content: "✱";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #4eba87;
 }
 
 section:first-of-type {

@@ -53,7 +53,8 @@ export default {
   },
   mounted() {
     this._options = {
-      responsive: true
+      responsive: true,
+      maintainAspectRatio: false
     };
     this.renderChart(this.chartData, this._options);
   },
