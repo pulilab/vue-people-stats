@@ -1,6 +1,6 @@
 {
   "official modules": ["vue", "vue-router", "vuex", "vue-cli", "vuepress", "vuefire", "jsx", "eslint-plugin-vue", "vetur", "vue-test-utils", "vue-jest", "babel-preset-vue", "vue-devtools"],
   "ui libraries": ["vuetify", ["element-ui", "element-js"], "shards", ["vue-material", "vuematerial"], "buefy", "quasar", "bootstrap-vue", "vuesax" ],
-  "backend languages": ["php", ["node-js", "node"], "java", "python", ["golang", "go"], ["net-core", "netcore"], ["ruby-on-rails"], ["kotlin"]],
-  "communities": [["VueVixens", "vue-vixen", "vue-vixens"], ["vuejsbrasil"], "vuepeople", "vuejssummit", "vuecolombia", ""]
+  "backend languages": ["php", ["node-js", "node"], "java", "python", ["golang", "go"], ["net-core", "netcore"], ["ruby"], ["kotlin"]],
+  "communities": [["VueVixens", "vue-vixen", "vue-vixens"], ["vuejsbrasil"], "vuepeople", "vuejssummit", "vuecolombia"]
 }
