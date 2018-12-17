@@ -9,7 +9,7 @@
     </section>
     <section>
       <div>
-        <h2>Top Ten</h2>
+        <h2>Top Ten Tags</h2>
         <TagChart :graph-data="tags.slice(0, 10)" />
       </div>
     </section>
