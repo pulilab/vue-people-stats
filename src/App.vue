@@ -1,33 +1,43 @@
 <template>
   <div id="app">
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="https://www.vuepeople.org/_nuxt/img/logo-vuepeople.26e761f.svg"
-    />
     <section>
-      <h2>Top Ten</h2>
-      <TagChart :graph-data="tags.slice(0, 10)" />
+      <img
+        alt="Vue logo"
+        class="logo"
+        src="https://www.vuepeople.org/_nuxt/img/logo-vuepeople.26e761f.svg"
+      />
+    </section>
+    <section>
+      <div>
+        <h2>Top Ten</h2>
+        <TagChart :graph-data="tags.slice(0, 10)" />
+      </div>
     </section>
 
     <section v-for="s in sections" :key="s">
-      <h2>{{ s }}</h2>
-      <TagChart :graph-data="tags" :subsets="subsets[s]" />
+      <div>
+        <h2>{{ s }}</h2>
+        <TagChart :graph-data="tags" :subsets="subsets[s]" />
+      </div>
     </section>
 
     <section v-if="countriesCount">
-      <h2>Country Distribution</h2>
-      <TagChart :graph-data="countriesCount" />
+      <div>
+        <h2>Country Distribution</h2>
+        <TagChart :graph-data="countriesCount" />
+      </div>
     </section>
 
     <section>
-      <h2>Free Search</h2>
-      <input v-model.lazy="search" />
-      <TagChart
-        v-if="searched.length > 0"
-        :graph-data="tags"
-        :subsets="searched"
-      />
+      <div>
+        <h2>Free Search</h2>
+        <input v-model.lazy="search" />
+        <TagChart
+          v-if="searched.length > 0"
+          :graph-data="tags"
+          :subsets="searched"
+        />
+      </div>
     </section>
   </div>
 </template>
@@ -106,24 +116,80 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
+  width: 100vw;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #35495e;
+  background-color: #f0f3f6;
 }
+
 .logo {
   width: 500px;
 }
 
 h2 {
+  margin: 0 0 26px;
+  font-size: 52px;
+  line-height: 1;
   text-transform: capitalize;
+  letter-spacing: -1px;
 }
 
 section {
-  width: 40%;
-  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section > div {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.075);
+}
+
+section > div h2,
+section > div > div {
+  width: 50%;
+}
+
+section input {
+  width: 35%;
+  padding: 10px;
+  font-size: 24px;
+  text-align: center;
+  border: 1px solid #a6b0ba;
+  border-radius: 100px;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  color: #35495e;
+  outline: none;
+}
+
+section:first-of-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
 }
 </style>
