@@ -1,6 +1,7 @@
 <script>
 import kebabCase from "lodash/kebabCase";
 import { Pie } from "vue-chartjs";
+import randomColor from "randomcolor";
 
 export default {
   extends: Pie,
@@ -17,6 +18,9 @@ export default {
   computed: {
     filteredData() {
       return this.subsets ? this.filterBySubset() : this.graphData;
+    },
+    colors() {
+      return randomColor({ count: this.filteredData.length });
     },
     chartData() {
       const data = [];
@@ -38,6 +42,15 @@ export default {
       };
     }
   },
+  watch: {
+    chartData: {
+      deep: true,
+      immediate: false,
+      handler() {
+        this.renderChart(this.chartData, this._options);
+      }
+    }
+  },
   mounted() {
     this._options = {
       responsive: true
@@ -50,8 +63,11 @@ export default {
         case "vue": {
           return "#42b883";
         }
+        case "vuevixens": {
+          return "#ed7251";
+        }
         default: {
-          return "#" + ((Math.random() * 0xffffff) << 0).toString(16);
+          return this.colors.pop();
         }
       }
     },
