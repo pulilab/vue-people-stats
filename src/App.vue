@@ -21,6 +21,24 @@
       </div>
     </section>
 
+    <section>
+      <div>
+        <h2>VueVixens</h2>
+        <ul>
+          <li>https://vuevixens.org/</li>
+          <li>
+            Vue Vixens are foxy people who identify as women <br />
+            and who want to learn Vue.js to make websites and mobile apps
+          </li>
+          <li>
+            Self-driven code labs completed in a workshop format in groups with
+            mentoring
+          </li>
+          <li>info@vuevixens.org</li>
+        </ul>
+      </div>
+    </section>
+
     <section v-if="countriesCount">
       <div>
         <h2>Country Distribution</h2>
